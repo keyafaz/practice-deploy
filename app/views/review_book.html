@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+</head>
+<body>
+
+<ul>
+		<li><a href="/users/add_book">Add book and review</a></li>
+		<li><a href="/users/logout">Logout</a></li>
+	</ul>
+
+<h1>ADD BOOK TITLE</h1>
+
+<h2>Reviews</h2>
+
+
+
+<form>
+	<h3>Add a review</h3>
+	<textarea name="review"></textarea>
+	Rating: <select name="rating">
+		<option value="one">1</option>
+		<option value="two">2</option>
+		<option value="three">3</option>
+		<option value="four">4</option>
+		<option value="five">5</option> 
+	</select> stars
+	<input type="submit" value="Submit review">
+</form>
+
+
+		{% for review in all_reviews %}
+			<h2>{{review['title']}}</h2>
+			<p>{{review['rating']}}</p>
+			<p>{{review['name']}}</p>
+			<p>{{review['reviews']}}</p>
+			<p>{{review['created_on']}}</p>
+
+		{% endfor %}
+</body>
+</html>

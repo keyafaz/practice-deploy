@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    
+  <style type="text/css">
+    .button{margin-left: 225px;}
+
+    .fl{border: 1px black solid;
+        display: inline-block;
+        vertical-align: top;}
+    td{padding: 5px 30px 7px 0px;}
+    table{padding-bottom: 20px;}
+    
+
+  </style>
+</head>
+<body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if category == 'logouts' %}
+      <p>{{message}}</p>
+      {% endif %}
+    {% endfor %}</div>
+  {% endif %}
+{% endwith %}
+
+<div class="fl">
+<form action="/users/register" method="POST" >
+<h2>Register</h2>
+    <table>
+    <tr>
+    <td>Name:</td>
+    <td><input type="text" name="name"></td>
+    </tr>
+    <tr>
+    <td>Alias:</td>
+    <td><input type="text" name="alias"></td>
+    </tr>
+    <tr>
+    <td>Email:</td>
+    <td><input type="text" name="email"></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td> <input type="password" name="password"></td>
+    </tr>
+    <tr>
+      <td>Confrim PW:</td>
+      <td> <input type="password" name="confirm_pw"></td>
+    </tr>
+    <tr>
+        <td>Date Of Birth</td>
+        <td><input type="date" name="birthday"></td>
+    </tr>
+    </table>
+    <input type="submit" value="Register" class="button">
+</form>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if category == 'regis_errors' %}
+      <p>{{message}}</p>
+      {% endif %}
+    {% endfor %}</div>
+  {% endif %}
+{% endwith %}
+</div>
+
+<div class="fl">
+ <h2>Login</h2>
+
+   <form action="/users/login" method="POST" >
+    <table>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" name="email"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password"></td>
+        </tr>
+    </table>
+     <input type="submit" value="Login" class="button">
+   </form>
+
+ {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if category == 'login_errors' %}
+      <p>{{message}}</p>
+      {% endif %}
+    {% endfor %}</div>
+  {% endif %}
+{% endwith %}
+</div>
+</body>
+</html>

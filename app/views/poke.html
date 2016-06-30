@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Poke</title>
+	<style type="text/css">
+		.logoutbutton{float: right;}
+		td{padding: 10px;}
+		.box{border:1px black solid; display: inline-block;}
+	</style>
+</head>
+<body>
+<a href="/users/logout" class="logoutbutton">Log out</a>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <h1>{{message}}</h1>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+<h2>Welcome {{session['name']}}</h2>
+
+<div class="box">
+	<table>
+			<tr>
+				<td>Name</td>
+				<td>Alias</td>
+				<td>Email Address</td>
+				<td>Poke History</td>
+				<td>action</td>
+			</tr>
+	
+{% for user in all_users %}
+
+{% if user['id'] != session['logged_in_as'] %}
+<tr>
+			<form action="/users/poke_user" method="POST">
+				<input type="hidden" name="pokee_id" value="{{user['id']}}">
+				
+				<td>{{user['name']}}  {{user['id']}}</td>
+				<td>{{user['alias']}}</td>
+				<td>{{user['email']}}</td>
+				<td>{{user['poke_history']}}</td>
+	
+	<td><input type="submit" value="Poke!"></td>
+				
+			</tr>
+			</form>
+			{% endif %}
+
+{% endfor %}
+
+	
+</table>
+</div>
+	
+</body>
+</html>

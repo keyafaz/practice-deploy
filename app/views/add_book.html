@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<ul>
+		<li><a href="/users/add_book">Add book and review</a></li>
+		<li><a href="/users/logout">Logout</a></li>
+	</ul>
+<h2>Add a new book</h2>
+<form action="/users/create" method="POST">
+	Title: <input type="text" name="title">
+	 <select name="authordropdown"> {% for author in authors %}<option 
+	>  
+		{{author['author']}}
+		
+        </option>{% endfor %}</select>
+	Or add a new author: <input type="text" name="author">
+	Reviews <textarea name="review"></textarea>
+	Rating: <select name="rating">
+		<option value="one">1</option>
+		<option value="two">2</option>
+		<option value="three">3</option>
+		<option value="four">4</option>
+		<option value="five">5</option> 
+	</select> stars
+	<input type="submit" value="Add Book and review">
+
+</form>
+
+
+</body>
+</html>

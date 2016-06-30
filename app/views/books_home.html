@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+	<h1>Welcome, {{session['name']}}!</h1>
+
+	<ul>
+		<li><a href="/users/add_book">Add book and review</a></li>
+		<li><a href="/users/logout">Logout</a></li>
+	</ul>
+{% with messages = get_flashed_messages(login_errors) %}
+	{% if messages %}
+		{% for message in messages %}
+			<p>{{message}}</p>
+		{% endfor %}</div>
+	{% endif %}
+{% endwith %}
+	
+
+	<h2> Recent Book Reviews:</h2>
+		{% for review in all_reviews %}
+			<h2>{{review['title']}}</h2>
+			<p>{{review['rating']}}</p>
+			<p>{{review['name']}}</p>
+			<p>{{review['reviews']}}</p>
+			<p>{{review['created_on']}}</p>
+
+		{% endfor %}
+
+	<h2>Other Book reviews</h2>
+
+
+
+</body>
+</html>
